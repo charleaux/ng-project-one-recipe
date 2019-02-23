@@ -12,7 +12,7 @@ export class RecipeListComponent implements OnInit {
     new Recipe(
       'A test recipe',
       'This is a test',
-      'https://pixnio.com/free-images/2017/09/21/2017-09-21-06-45-25-1100x723.jpg'
+      'https://suzyssitcom.com/wp-content/uploads/2014/07/Teriyaki-Orange-Beef-Kebabs-and-Wet-Naps7.jpg'
     ),
     new Recipe(
       'A test recipe2',
