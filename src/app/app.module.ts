@@ -30,7 +30,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ErrorPageComponent
   ],
   imports: [BrowserModule, FormsModule, HttpModule, AppRoutingModule],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
