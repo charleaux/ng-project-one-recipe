@@ -17,7 +17,7 @@ export class RecipeService {
     new Recipe(
       'Big Fat Burger',
       'What else do you need to say?',
-      'https://cdn.pixabay.com/photo/2017/04/04/16/25/hamburger-2201744_960_720.jpg',
+      'https://www.maxpixel.net/static/photo/1x/Burger-Roll-Barbecue-Hamburger-Barbeque-Bbq-2762431.jpg',
       [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
     )
   ];
