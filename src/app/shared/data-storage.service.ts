@@ -27,12 +27,10 @@ export class DataStorageService {
             recipe.ingredients = [];
           }
         }
-
+        this.recipeService.setRecipes(recipes);
         return recipes;
       }),
       catchError(error => throwError('Something went wrong'))
-    ).subscribe((recipes: Recipe[]) => {
-      this.recipeService.setRecipes(recipes);
-    });
+    );
   }
 }
