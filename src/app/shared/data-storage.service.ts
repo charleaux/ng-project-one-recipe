@@ -22,10 +22,17 @@ export class DataStorageService {
     return this.http.get(this.url_base + '/recipes.json').pipe(
       map((response: Response) => {
         const recipes: Recipe[] = response.json();
-        this.recipeService.setRecipes(recipes);
+        for (let recipe of recipes) {
+          if (!recipe.ingredients) {
+            recipe.ingredients = [];
+          }
+        }
+
         return recipes;
       }),
       catchError(error => throwError('Something went wrong'))
-    );
+    ).subscribe((recipes: Recipe[]) => {
+      this.recipeService.setRecipes(recipes);
+    });
   }
 }
