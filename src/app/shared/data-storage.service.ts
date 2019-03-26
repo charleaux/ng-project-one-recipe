@@ -8,21 +8,21 @@ import { Recipe } from '../recipes/recipe.model';
 
 @Injectable()
 export class DataStorageService {
-  private url_base: string = 'https://ng-project-one-recipe.firebaseio.com';
+  private urlBase = 'https://ng-project-one-recipe.firebaseio.com';
   constructor(private http: Http, private recipeService: RecipeService) {}
 
   storeRecipes() {
     return this.http.put(
-      this.url_base + '/recipes.json',
+      this.urlBase + '/recipes.json',
       this.recipeService.getRecipes()
     );
   }
 
   getRecipes() {
-    return this.http.get(this.url_base + '/recipes.json').pipe(
+    return this.http.get(this.urlBase + '/recipes.json').pipe(
       map((response: Response) => {
         const recipes: Recipe[] = response.json();
-        for (let recipe of recipes) {
+        for (const recipe of recipes) {
           if (!recipe.ingredients) {
             recipe.ingredients = [];
           }
