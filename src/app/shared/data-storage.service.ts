@@ -5,21 +5,28 @@ import { throwError } from 'rxjs';
 
 import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class DataStorageService {
   private urlBase = 'https://ng-project-one-recipe.firebaseio.com';
-  constructor(private http: Http, private recipeService: RecipeService) {}
+  constructor(
+    private http: Http,
+    private recipeService: RecipeService,
+    private authService: AuthService
+  ) {}
 
   storeRecipes() {
+    let token = this.authService.getToken();
     return this.http.put(
-      this.urlBase + '/recipes.json',
+      this.urlBase + '/recipes.json?auth=' + token,
       this.recipeService.getRecipes()
     );
   }
 
   getRecipes() {
-    return this.http.get(this.urlBase + '/recipes.json').pipe(
+    let token = this.authService.getToken();
+    return this.http.get(this.urlBase + '/recipes.json?auth=' + token).pipe(
       map((response: Response) => {
         const recipes: Recipe[] = response.json();
         for (const recipe of recipes) {
