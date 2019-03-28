@@ -12,7 +12,13 @@ export class ErrorPageComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: Data) => {
-      this.errorMessage = data.message;
+      if (data.message !== undefined) {
+        this.errorMessage = data.message;
+      } else {
+        this.errorMessage = 'Page not found';
+      }
+
+      // console.log(data.message);
     });
   }
 }
