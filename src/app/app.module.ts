@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
@@ -13,7 +13,7 @@ import { CoreModule } from './core/core.module';
   declarations: [AppComponent, ErrorPageComponent],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     ShoppingListModule,
     AuthModule,
     CoreModule,

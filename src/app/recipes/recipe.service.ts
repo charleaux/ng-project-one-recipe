@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
-import { Subject, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
@@ -9,8 +7,6 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService {
-  private url_base: string = 'https://ng-project-one-recipe.firebaseio.com';
-  private url_data: string = this.url_base + '/recipe.json';
   recipesChanged = new Subject<Recipe[]>();
   private recipes: Recipe[] = [
     new Recipe(
@@ -27,7 +23,7 @@ export class RecipeService {
     )
   ];
 
-  constructor(private slService: ShoppingListService, private http: Http) {}
+  constructor(private slService: ShoppingListService) {}
 
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;

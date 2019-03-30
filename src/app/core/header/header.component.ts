@@ -3,6 +3,8 @@ import { Response } from '@angular/http';
 
 import { DataStorageService } from '../../shared/data-storage.service';
 import { AuthService } from '../../auth/auth.service';
+import { HttpResponse, HttpEvent } from '@angular/common/http';
+import { Recipe } from 'src/app/recipes/recipe.model';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +23,7 @@ export class HeaderComponent implements OnInit {
     this.dataStorageService
       .storeRecipes()
       .subscribe(
-        (response: Response) => console.log(response),
+        response => console.log(response),
         error => console.log(error)
       );
   }
