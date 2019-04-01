@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-
-import { RecipeService } from '../recipes/recipe.service';
-import { Recipe } from '../recipes/recipe.model';
-import { AuthService } from '../auth/auth.service';
 import {
   HttpClient,
   HttpHeaders,
@@ -12,17 +8,19 @@ import {
   HttpRequest
 } from '@angular/common/http';
 
+import { RecipeService } from '../recipes/recipe.service';
+import { Recipe } from '../recipes/recipe.model';
+
 @Injectable()
 export class DataStorageService {
   private urlBase = 'https://ng-project-one-recipe.firebaseio.com';
   constructor(
     private httpClient: HttpClient,
-    private recipeService: RecipeService,
-    private authService: AuthService
+    private recipeService: RecipeService
   ) {}
 
   storeRecipes() {
-    //const token = this.authService.getToken();
+    // const token = this.authService.getToken();
     // const headers = new HttpHeaders().set('Authorization','Bearer afdklasfladf');
     // const params = new HttpParams().set('auth', token);
     // return this.httpClient.put(
@@ -44,7 +42,7 @@ export class DataStorageService {
   }
 
   getRecipes() {
-    //const token = this.authService.getToken();
+    // const token = this.authService.getToken();
     // const params = new HttpParams().set('auth', token);
     return (
       this.httpClient
