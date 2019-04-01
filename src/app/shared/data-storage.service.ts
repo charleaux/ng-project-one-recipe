@@ -22,7 +22,7 @@ export class DataStorageService {
   ) {}
 
   storeRecipes() {
-    const token = this.authService.getToken();
+    //const token = this.authService.getToken();
     // const headers = new HttpHeaders().set('Authorization','Bearer afdklasfladf');
     // const params = new HttpParams().set('auth', token);
     // return this.httpClient.put(
@@ -44,7 +44,7 @@ export class DataStorageService {
   }
 
   getRecipes() {
-    const token = this.authService.getToken();
+    //const token = this.authService.getToken();
     // const params = new HttpParams().set('auth', token);
     return (
       this.httpClient
