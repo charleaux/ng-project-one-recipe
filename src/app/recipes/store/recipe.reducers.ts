@@ -1,9 +1,9 @@
 import { Recipe } from '../recipe.model';
 import { Ingredient } from 'src/app/shared/ingredient.model';
-
 import * as RecipeActions from './recipe.actions';
+import * as fromApp from '../../store/app.reducers';
 
-export interface FeatureState {
+export interface FeatureState extends fromApp.AppState {
   recipes: State;
 }
 
@@ -44,12 +44,12 @@ export function recipeReducer(
         recipes: [...state.recipes, action.payload]
       };
     case RecipeActions.UPDATE_RECIPE:
-      const recipes = [...state.recipes];
       const recipe = state.recipes[action.payload.index];
       const updatedRecipe = {
         ...recipe,
         ...action.payload.updatedRecipe
       };
+      const recipes = [...state.recipes];
       recipes[action.payload.index] = updatedRecipe;
       return {
         ...state,
