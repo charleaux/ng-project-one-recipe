@@ -19,7 +19,7 @@ import { AuthEffects } from './auth/store/auth.effects';
 @NgModule({
   declarations: [AppComponent, ErrorPageComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     ShoppingListModule,
     AuthModule,
