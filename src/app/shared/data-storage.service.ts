@@ -23,11 +23,8 @@ export class DataStorageService {
 
   storeRecipes() {
     const token = this.authService.getToken();
-    const headers = new HttpHeaders().set(
-      'Authorization',
-      'Bearer afdklasfladf'
-    );
-    const params = new HttpParams().set('auth', token);
+    // const headers = new HttpHeaders().set('Authorization','Bearer afdklasfladf');
+    // const params = new HttpParams().set('auth', token);
     // return this.httpClient.put(
     //   this.urlBase + '/recipes.json',
     //   this.recipeService.getRecipes(),
@@ -36,25 +33,30 @@ export class DataStorageService {
     //     params
     //   }
     // );
+    // const req = new HttpRequest('PUT',this.urlBase + '/recipes.json',this.recipeService.getRecipes(),{ reportProgress: true, params });
     const req = new HttpRequest(
       'PUT',
       this.urlBase + '/recipes.json',
       this.recipeService.getRecipes(),
-      { reportProgress: true, params }
+      { reportProgress: true }
     );
     return this.httpClient.request(req);
   }
 
   getRecipes() {
     const token = this.authService.getToken();
-    const params = new HttpParams().set('auth', token);
+    // const params = new HttpParams().set('auth', token);
     return (
       this.httpClient
         // .get<Recipe[]>(this.urlBase + '/recipes.json?auth=' + token)
+        // .get<Recipe[]>(this.urlBase + '/recipes.json', {
+        //   observe: 'body',
+        //   responseType: 'json',
+        //   params
+        // })
         .get<Recipe[]>(this.urlBase + '/recipes.json', {
           observe: 'body',
-          responseType: 'json',
-          params
+          responseType: 'json'
         })
         .pipe(
           map(recipes => {
